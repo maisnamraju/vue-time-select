@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <Time-Picker :date="date" from="12:20:00" format="hh:mm:ss" />
+    <Hello-World>
+      <div class="flex-auto flex flex-col items-center h-24 mt-20">
+      <Time-Picker :date="date" from="12:20:00" format="hh:mm A" :placeholder.sync="placeholder" />
+      <code>
+        {{ code }}
+      </code>
+      </div>
+      <div class="flex-auto flex flex-col items-center h-24 mt-2">
+        <Time-Picker :date="date" from="11:20:00" to="22:20:30" :interval="30" format="hh:mm:ss" :placeholder.sync="placeholder" />
+      </div>
+    </Hello-World>
   </div>
 </template>
 
 <script>
 import TimePicker from "@/components/TimePicker";
-
+import HelloWorld from "@/components/HelloWorld";
 export default {
   name: "App",
   components: {
-    TimePicker
+    TimePicker,
+    HelloWorld
   },
-  data:() => ({
-    date: new Date()
+  data: () => ({
+    date: new Date(),
+    placeholder: 'Select A Time',
+    code: `<Time-Picker :date="date" from="12:20:00" format="hh:mm A" :placeholder.sync="placeholder" />`
   })
 };
 </script>
