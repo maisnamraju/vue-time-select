@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Time-Picker :date="date" from="12:20:00" format="hh:mm:ss" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import TimePicker from "@/components/TimePicker";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
-  }
+    TimePicker
+  },
+  data:() => ({
+    date: new Date()
+  })
 };
 </script>
 
