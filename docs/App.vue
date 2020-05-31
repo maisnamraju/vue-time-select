@@ -2,7 +2,21 @@
   <div id="app">
     <Hello-World>
       <div class="flex-auto flex flex-col items-center h-24 mt-20">
-      <Time-Picker :date="date" from="12:20:00" format="hh:mm A" :placeholder.sync="placeholder" />
+      <Time-Picker 
+      :date="date" 
+      from="12:20:00" 
+      format="hh:mm A"
+      v-model="timeVal"
+      :style="{
+        '--button-color': '#cbd5e0',
+        '--border-color': '#4DA2DD',
+        '--hover-border-color': '#007ace',
+        '--hover-list-text-color': '#f5f5f5',
+        '--hover-list-bg-color': '#5c6ac4',
+        '--list-bg-color': '#DDDDDD',
+        '--width': 'auto'
+      }"
+      :placeholder.sync="placeholder" />
       <code>
         {{ code }}
       </code>
@@ -26,6 +40,7 @@ export default {
   data: () => ({
     date: new Date(),
     placeholder: 'Select A Time',
+    timeVal: {},
     code: `<Time-Picker :date="date" from="12:20:00" format="hh:mm A" :placeholder.sync="placeholder" />`
   })
 };

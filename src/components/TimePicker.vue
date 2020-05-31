@@ -1,10 +1,12 @@
 <template>
   <div class="time-picker">
-    <div @click="show = !show">
+    <button @click="show = !show">
       <slot>
-        {{ placeholder }} 
+        <span v-if="value.t">{{ value.t }} </span>
+        <span v-else>{{ placeholder }} </span>
+        <svg-icon class="h-5 w-5"></svg-icon>
       </slot>
-    </div>
+    </button>
     <div class="time-list-container" v-show="show">
       <ul class="time-list">
         <time-option
@@ -21,10 +23,19 @@
 </template>
 
 <script>
-import TimeOption from "@/components/TimeOption";
 
+import TimeOption from "@/components/TimeOption";
+import svgIcon from '@/components/svg';
 export default {
   props: {
+    value: {
+      type:Object,
+      default(){
+        return {
+
+        }
+      }
+    },
     placeholder: {
       type: String,
       default: "Select a Time",
@@ -62,6 +73,7 @@ export default {
   },
   components: {
     TimeOption,
+    svgIcon
   },
   data: () => ({
     selectedArr: [],
@@ -100,8 +112,7 @@ export default {
       this.timeArr = [startTime, ...arr];
     },
     selected(val) {
-      this.$emit("selected", val);
-      this.$emit('update:placeholder',val.t);
+      this.$emit("input", val);
       this.show = false;
       if (this.multi == true) {
         this.selectedArr.push(val);
@@ -119,27 +130,45 @@ export default {
   },
 };
 </script>
-
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
 <style lang="scss">
 .time-picker {
-  @apply .flex .flex-col .items-center .relative .border .border-gray-700 .px-4 .py-1 .rounded;
-  &:hover {
-    @apply .cursor-pointer .bg-gray-100 .border-gray-900;
+  @apply .flex .flex-col .items-center .relative;
+  width: var(--width);
+  button {
+    @apply .inline-flex .items-center .outline-none .w-full .border .rounded .px-2 .py-1;
+    width: var(--width);
+    background: var(--button-color);
+    border-color: var(--border-color);
+    &:hover, &:focus{
+      @apply .outline-none;
+      border-color: var(--hover-border-color);
+    }
   }
+  
   &>div {
     @apply .text-center .my-1;
+    width: var(--width);
     &:first-child {
       @apply .z-20;
     }
   }
   .time-list-container {
     @apply .absolute .shadow .z-10 .w-full .rounded .overflow-y-scroll;
+    background-color: var(--list-bg-color);
     top: 100%;
-    height: 200px;
+    height: 150px;
     .time-list {
       li {
-        @apply .cursor-pointer .w-full .border-gray-100 .rounded-t .border-b;
-        &:hover { @apply .bg-teal-100; }
+        @apply .cursor-pointer .w-full .border-gray-100;
+        &:hover { 
+          color: var(--hover-list-text-color);
+          background: var(--hover-list-bg-color);
+          }
       }
     }
   }
