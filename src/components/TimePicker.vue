@@ -139,15 +139,15 @@ export default {
 .time-picker {
   @apply .flex .flex-col .items-center .relative;
   width: var(--width);
+  background: var(--button-color);
+  border-color: var(--border-color);
+  &:hover, &:focus{
+    @apply .outline-none;
+    border-color: var(--hover-border-color);
+  }
   button {
-    @apply .inline-flex .items-center .outline-none .w-full .border .rounded .px-2 .py-1;
+    @apply .inline-flex .justify-between .items-center .outline-none .w-full .border .rounded .px-2 .py-1;
     width: var(--width);
-    background: var(--button-color);
-    border-color: var(--border-color);
-    &:hover, &:focus{
-      @apply .outline-none;
-      border-color: var(--hover-border-color);
-    }
   }
   
   &>div {
@@ -161,7 +161,7 @@ export default {
     @apply .absolute .shadow .z-10 .w-full .rounded .overflow-y-scroll;
     background-color: var(--list-bg-color);
     top: 100%;
-    height: 150px;
+    height: var(--height-time-options, 150px);
     .time-list {
       li {
         @apply .cursor-pointer .w-full .border-gray-100;
