@@ -1,9 +1,9 @@
 # Vue Time Picker Select 
 
-![GitHub version](https://img.shields.io/github/package-json/v/phoenixwong/vue2-timepicker?color=success&style=flat-square)
-![npm version](https://img.shields.io/npm/v/vue2-timepicker?style=flat-square)
-![GitHub release](https://img.shields.io/github/release/phoenixwong/vue2-timepicker?label=github&style=flat-square)
-![npm downloads](https://img.shields.io/npm/dm/vue2-timepicker?style=flat-square)
+![GitHub version](https://img.shields.io/github/package-json/v/maisnamraju/vue-time-select?color=success&style=flat-square)
+![npm version](https://img.shields.io/npm/v/vue-time-select?style=flat-square)
+![GitHub release](https://img.shields.io/github/release/maisnamraju/vue-time-select?label=github&style=flat-square)
+![npm downloads](https://img.shields.io/npm/dm/vue-time-select?style=flat-square)
 
 A jQuery Timepicker inspired time picker for vuejs using a select style dropdown. Current Supports `AM/PM` format and `HH:mm:ss` formats, more in the pipeline, supports styling using css variables. 
 No external dependencies other than tailwindcss. 
